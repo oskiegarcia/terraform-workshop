@@ -1,3 +1,9 @@
+Useful links:
+1. EC2 locator
+    https://cloud-images.ubuntu.com/locator/ec2/
+    
+
+
 Do exercises with increasing complexity:
 1. Environment setup
    a. Download terraform
