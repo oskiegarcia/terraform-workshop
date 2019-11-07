@@ -1,38 +1,40 @@
-Do exercises with increasing complexity:
+
+
 1. Environment setup
-   a. Download terraform
+   a. Setup your AWS account
+  
+     - Create user with Admin privileges
+     - Create your ACCESS KEY
+
+   b. Download terraforme
 
       https://www.terraform.io/downloads.html
 
-   b. Setup backend to store terraform state in Amazon S3
-       - Create bucket in AWS
-         1. Create an S3 bucket (Note that bucket name is unique globally)
-         2. Create folder called "mytf"
-       - Configure the bucket and path in backend.tf
+   c. Install AWS CLI 
+   
+      Windows:
+        https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html
+        
+      Mac:
+        https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html  
+       
+      Linux:
+        https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html  
 
-           terraform {
-             backend "s3" {
-               bucket = "<YOUR BUCKET NAME>"
-               key    = "mytf/terraform.tfstate"
-               region = "ap-southeast-1"
-             }
-           }
+   d. Run AWS configure command to store access key
 
-       - Execute the following:
-        terraform init
-        terraform workspace new dev
+     aws configure
 
+   f. If you are pushing to Github, put the following entries in .gitignore file
+   
+       .idea/
+       */.terraform/*
+       */terraform.tfstate
+       */terraform.tfstate.backup
 
-2. Create VPC and Internet Gateway
+2. Useful links
 
-terraform init
-terraform workspace select dev
-terraform plan
-terraform apply
+   a. EC2 locator 
+      https://cloud-images.ubuntu.com/locator/ec2/
 
-3. Create the following AWS Resources:
-   a. Public subnet
-   b. Route Table
-   c. Security Group
-   d. EC2 instance inside public subnet
 
