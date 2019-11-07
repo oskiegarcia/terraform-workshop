@@ -6,6 +6,6 @@
 - How terraform keeps track of the tf state file
   *  If the underlying resource changes outside of terraform and you hit terraform apply again, terraform will make changes to meet
      the tf state file
-  * e.g. you terminate an instance that is managed by terraform, after terraform apply, it will be 
-    create again
+  * e.g. you terminate an instance that is managed by terraform, after terraform apply, instance will be 
+    created again
        
