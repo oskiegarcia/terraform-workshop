@@ -15,6 +15,5 @@ Setup backend to store terraform state in Amazon S3
              }
            }
 
-       - Execute the following:
+       - Execute the following:  
         terraform init
-        terraform workspace new dev
