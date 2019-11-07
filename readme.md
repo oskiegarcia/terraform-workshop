@@ -38,7 +38,9 @@
 
 2. Useful links
 
-   a. EC2 locator  
-      https://cloud-images.ubuntu.com/locator/ec2/
+   Name      | URL
+   ----------|------------
+   EC2 locator| https://cloud-images.ubuntu.com/locator/ec2/ 
+      
 
 
