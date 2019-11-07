@@ -6,20 +6,18 @@
      - Create user with Admin privileges
      - Create your ACCESS KEY
 
-   b. Download terraforme
+   b. Download terraform
 
       https://www.terraform.io/downloads.html
 
    c. Install AWS CLI 
    
-      Windows:
-        https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html
-        
-      Mac:
-        https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html  
-       
-      Linux:
-        https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html  
+     Platform  | URL
+     ----------|------------
+      Windows  | https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html
+      Mac      | https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html
+      Linux    |  https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html 
+           
 
    d. Run AWS configure command to store access key
 
