@@ -22,7 +22,7 @@
    d. Run AWS configure command to store access key
 
      ```shell script
-     aws configure
+     aws configure --profile <PROFILE NAME>
      ```
 
    f. If you are pushing to Github, put the following entries in .gitignore file
