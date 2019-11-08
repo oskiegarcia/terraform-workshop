@@ -1,4 +1,11 @@
+# Exercise 1
 
+## AWS Resources
+- IAM User
+- EC2
+
+
+## Notes:
 - Terraform keeps the remote state of the infrastructure
 - It stores it in a file called terraform.tfstate
 - Previous state is stored in terraform.tfstate.backup

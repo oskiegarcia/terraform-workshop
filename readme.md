@@ -22,7 +22,7 @@
    d. Run AWS configure command to store access key
 
      ```shell script
-     aws configure --profile <PROFILE NAME>
+     aws configure --profile tf_demo
      ```
 
    f. If you are pushing to Github, put the following entries in .gitignore file
@@ -40,5 +40,19 @@
    ----------|------------
    EC2 locator| https://cloud-images.ubuntu.com/locator/ec2/ 
       
+3. Terraform commands
 
-
+   Command      | Description
+   ----------|------------
+   version| Prints the Terraform version
+   init| Initialize a Terraform working directory
+   plan| Generate ans show execution plan
+   apply| Builds or changes infrastructure
+   destroy| Destroy Terraform-managed infrastructure
+   show| Inspect Terraform state or plan
+   output| Read an output from a state file
+   refresh| Update local state file against real resources
+   console| Interactive console for Terraform interpolations
+   
+   
+      

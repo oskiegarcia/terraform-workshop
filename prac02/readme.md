@@ -1,5 +1,10 @@
-# Remote state
+# Exercise 2
 
+## AWS Resources
+- S3
+- EC2
+
+## Remote state
 Setup backend to store terraform state in Amazon S3
   1. Create bucket in AWS
         1. Create an S3 bucket (Note that bucket name is unique globally)
