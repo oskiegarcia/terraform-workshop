@@ -6,3 +6,7 @@ variable "aws_region" {
 variable "account_profile" {
   default = "tf_demo"
 }
+
+variable "key_name" {
+  default = "tf_demo_key"
+}
