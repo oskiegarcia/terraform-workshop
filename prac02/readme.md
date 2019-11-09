@@ -24,3 +24,8 @@ Setup backend to store terraform state in Amazon S3
 
        - Execute the following:  
         terraform init
+
+## SSH login to EC2
+ssh -i "tf_demo.pem" ubuntu@<public_ip>
+
+
