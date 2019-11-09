@@ -39,6 +39,7 @@
    Name      | URL
    ----------|------------
    EC2 locator| https://cloud-images.ubuntu.com/locator/ec2/ 
+   List of Providers| https://www.terraform.io/docs/providers/index.html
       
 3. Terraform commands
 
@@ -63,5 +64,5 @@ resource "<PROVIDER>_<TYPE>" "<NAME>" {
  [CONFIG …]
 }
 ```
-   
+    
       
