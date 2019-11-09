@@ -4,7 +4,7 @@
 - IAM Role
 - VPC
 - Subnet
-- Availability Zone
 - Route table
-- Network ACL
+- Internet Gateway
+- NAT Gateway
 
