@@ -2,5 +2,9 @@
 
 ## AWS Resources
 - IAM Role
-- Security Group
-- Key Pair
+- VPC
+- Subnet
+- Availability Zone
+- Route table
+- Network ACL
+
