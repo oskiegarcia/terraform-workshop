@@ -54,5 +54,14 @@
    refresh| Update local state file against real resources
    console| Interactive console for Terraform interpolations
    
+ 4. Terraform syntax
+ 
+ The general syntax for a Terraform resource is:
+ 
+ ```hcl-terraform
+resource "<PROVIDER>_<TYPE>" "<NAME>" {
+ [CONFIG …]
+}
+```
    
       

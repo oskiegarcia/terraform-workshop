@@ -3,6 +3,8 @@
 ## AWS Resources
 - S3
 - EC2
+- Key Pair
+- Security Group
 
 ## Remote state
 Setup backend to store terraform state in Amazon S3

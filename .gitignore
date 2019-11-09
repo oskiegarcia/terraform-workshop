@@ -1,4 +1,6 @@
 .idea/
+terraform.iml
 */.terraform/*
 */terraform.tfstate
 */terraform.tfstate.backup
+*/tf_demo.pem
