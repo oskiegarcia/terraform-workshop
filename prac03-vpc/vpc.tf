@@ -14,9 +14,9 @@ resource "aws_internet_gateway" "tf_demo_igw" {
 
 
 /*
-  Public Subnet
+  Public Subnet - Availability Zone A
 */
-resource "aws_subnet" "az_1a_public_sub" {
+resource "aws_subnet" "az_a_public_sub" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
   cidr_block = var.public_subnet_cidr
@@ -30,7 +30,7 @@ resource "aws_subnet" "az_1a_public_sub" {
   }
 }
 
-resource "aws_route_table" "az_1a_public_rtb" {
+resource "aws_route_table" "az_a_public_rtb" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
   route {
@@ -45,13 +45,13 @@ resource "aws_route_table" "az_1a_public_rtb" {
   }
 }
 
-resource "aws_route_table_association" "az_1a_public_rtba" {
-  subnet_id = aws_subnet.az_1a_public_sub.id
-  route_table_id = aws_route_table.az_1a_public_rtb.id
+resource "aws_route_table_association" "az_a_public_rtba" {
+  subnet_id = aws_subnet.az_a_public_sub.id
+  route_table_id = aws_route_table.az_a_public_rtb.id
 }
 
 /*
-  Private Subnet
+  Private Subnet - Availability Zone A
 */
 
 resource "aws_eip" "nat_eip" {
@@ -65,7 +65,7 @@ resource "aws_eip" "nat_eip" {
 
 resource "aws_nat_gateway" "nat_gw" {
   allocation_id = aws_eip.nat_eip.id
-  subnet_id = aws_subnet.az_1a_public_sub.id
+  subnet_id = aws_subnet.az_a_public_sub.id
 
   tags = {
     Name = "tf-demo-nat"
@@ -74,7 +74,7 @@ resource "aws_nat_gateway" "nat_gw" {
   }
 }
 
-resource "aws_subnet" "az_1a_private_sub" {
+resource "aws_subnet" "az_a_private_sub" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
   cidr_block = var.private_subnet_cidr
@@ -88,7 +88,7 @@ resource "aws_subnet" "az_1a_private_sub" {
   }
 }
 
-resource "aws_route_table" "az_1a_private_rtb" {
+resource "aws_route_table" "az_a_private_rtb" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
   route {
@@ -104,6 +104,6 @@ resource "aws_route_table" "az_1a_private_rtb" {
 }
 
 resource "aws_route_table_association" "az_1a_private_rtba" {
-  subnet_id = aws_subnet.az_1a_private_sub.id
-  route_table_id = aws_route_table.az_1a_private_rtb.id
+  subnet_id = aws_subnet.az_a_private_sub.id
+  route_table_id = aws_route_table.az_a_private_rtb.id
 }
