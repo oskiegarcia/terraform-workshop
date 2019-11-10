@@ -15,6 +15,10 @@ variable "key_name" {
   default = "tf_demo_key"
 }
 
+variable "instance_type" {
+  default = "t2.micro"
+}
+
 variable "everywhere_cidr" {
   description = "CIDR for access outside AWS network"
   default = "0.0.0.0/0"

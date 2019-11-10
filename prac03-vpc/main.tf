@@ -33,7 +33,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "terra_demo1" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   key_name = aws_key_pair.generated_key.key_name
   vpc_security_group_ids = [aws_security_group.public_instance.id]
   subnet_id = aws_subnet.az_1a_public_sub.id
@@ -46,7 +46,7 @@ resource "aws_instance" "terra_demo1" {
 
 resource "aws_instance" "terra_demo2" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   key_name = aws_key_pair.generated_key.key_name
   vpc_security_group_ids = [aws_security_group.private_instance.id]
   subnet_id = aws_subnet.az_1a_private_sub.id
