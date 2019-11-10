@@ -32,8 +32,17 @@ resource "aws_autoscaling_group" "tf_demo_asg" {
   min_size                = "2"
   max_size                = "2"
   tag {
-    key = "tf-demo-asg"
+    key = "asg-name"
     propagate_at_launch = true
     value = "tf-demo-asg"
   }
 }
+
+data "aws_instances" "nodes" {
+  depends_on = [ "aws_autoscaling_group.tf_demo_asg" ]
+
+  instance_tags = {
+    asg-name = "tf-demo-asg"
+  }
+}
+
