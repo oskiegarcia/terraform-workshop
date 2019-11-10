@@ -14,23 +14,23 @@ resource "aws_internet_gateway" "tf_demo_igw" {
 
 
 /*
-  Public Subnet
+  Public Subnet - Availability Zone a
 */
-resource "aws_subnet" "az_1a_public_sub" {
+resource "aws_subnet" "az_a_public_sub" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
-  cidr_block = var.public_subnet_cidr
+  cidr_block = var.public_subnet_cidr_az_a
   availability_zone = "${var.aws_region}a"
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "tf-demo-public-subnet"
+    Name = "tf-demo-public-subnet-az-a"
     Owner = var.owner
     Env = "Dev"
   }
 }
 
-resource "aws_route_table" "az_1a_public_rtb" {
+resource "aws_route_table" "az_a_public_rtb" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
   route {
@@ -39,71 +39,51 @@ resource "aws_route_table" "az_1a_public_rtb" {
   }
 
   tags = {
-    Name = "public-route-table"
+    Name = "public-route-table-az-a"
     Owner = var.owner
     Env = "Dev"
   }
 }
 
-resource "aws_route_table_association" "az_1a_public_rtba" {
-  subnet_id = aws_subnet.az_1a_public_sub.id
-  route_table_id = aws_route_table.az_1a_public_rtb.id
+resource "aws_route_table_association" "az_a_public_rtba" {
+  subnet_id = aws_subnet.az_a_public_sub.id
+  route_table_id = aws_route_table.az_a_public_rtb.id
 }
+
 
 /*
-  Private Subnet
+  Public Subnet - Availability Zone b
 */
-
-resource "aws_eip" "nat_eip" {
-  tags = {
-    Name = "tf-demo-eip"
-    Owner = var.owner
-    Env = "Dev"
-  }
-
-}
-
-resource "aws_nat_gateway" "nat_gw" {
-  allocation_id = aws_eip.nat_eip.id
-  subnet_id = aws_subnet.az_1a_public_sub.id
-
-  tags = {
-    Name = "tf-demo-nat"
-    Owner = var.owner
-    Env = "Dev"
-  }
-}
-
-resource "aws_subnet" "az_1a_private_sub" {
+resource "aws_subnet" "az_b_public_sub" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
-  cidr_block = var.private_subnet_cidr
-  availability_zone = "${var.aws_region}a"
-  map_public_ip_on_launch = false
+  cidr_block = var.public_subnet_cidr_az_b
+  availability_zone = "${var.aws_region}b"
+  map_public_ip_on_launch = true
 
   tags = {
-    Name = "tf-demo-private-subnet"
+    Name = "tf-demo-public-subnet-az-b"
     Owner = var.owner
     Env = "Dev"
   }
 }
 
-resource "aws_route_table" "az_1a_private_rtb" {
+resource "aws_route_table" "az_b_public_rtb" {
   vpc_id = aws_vpc.tf_demo_vpc.id
 
   route {
     cidr_block = var.everywhere_cidr
-    nat_gateway_id = aws_nat_gateway.nat_gw.id
+    gateway_id = aws_internet_gateway.tf_demo_igw.id
   }
 
   tags = {
-    Name = "private-route-table"
+    Name = "public-route-table-az-b"
     Owner = var.owner
     Env = "Dev"
   }
 }
 
-resource "aws_route_table_association" "az_1a_private_rtba" {
-  subnet_id = aws_subnet.az_1a_private_sub.id
-  route_table_id = aws_route_table.az_1a_private_rtb.id
+resource "aws_route_table_association" "az_b_public_rtba" {
+  subnet_id = aws_subnet.az_b_public_sub.id
+  route_table_id = aws_route_table.az_b_public_rtb.id
 }

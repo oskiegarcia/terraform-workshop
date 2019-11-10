@@ -15,6 +15,10 @@ variable "key_name" {
   default = "tf_demo_key"
 }
 
+variable "instance_type" {
+  default = "t2.micro"
+}
+
 variable "everywhere_cidr" {
   description = "CIDR for access outside AWS network"
   default = "0.0.0.0/0"
@@ -25,12 +29,12 @@ variable "vpc_cidr" {
   default = "10.0.0.0/16"
 }
 
-variable "public_subnet_cidr" {
+variable "public_subnet_cidr_az_a" {
   description = "CIDR for the Public Subnet"
   default = "10.0.0.0/24"
 }
 
-variable "private_subnet_cidr" {
-  description = "CIDR for the Private Subnet"
-  default = "10.0.1.0/24"
+variable "public_subnet_cidr_az_b" {
+  description = "CIDR for the Public Subnet"
+  default = "10.0.2.0/24"
 }

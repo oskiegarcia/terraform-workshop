@@ -1,5 +1,5 @@
-resource "aws_security_group" "public_instance" {
-  name = "tf-demo-public-sg"
+resource "aws_security_group" "allow_ssh" {
+  name = "tf-demo-allow-ssh-sg"
   vpc_id = aws_vpc.tf_demo_vpc.id
   ingress {
     from_port = 22
@@ -15,21 +15,21 @@ resource "aws_security_group" "public_instance" {
     cidr_blocks = [var.everywhere_cidr]
   }
   tags = {
-    Name = "tf-demo-public-sg"
+    Name = "tf-demo-allow-ssh-sg"
     Owner = var.owner
     Env = "Dev"
   }
 }
 
-resource "aws_security_group" "private_instance" {
+resource "aws_security_group" "allow_http80" {
+  name = "tf-demo-allow-http80-sg"
   vpc_id = aws_vpc.tf_demo_vpc.id
-  name = "tf-demo-private-sg"
   ingress {
-    from_port = 22
-    to_port = 22
+    from_port = 80
+    to_port = 80
     protocol = "tcp"
-    cidr_blocks = [var.public_subnet_cidr]
-    description = "ssh login"
+    cidr_blocks = [var.everywhere_cidr]
+    description = "http access"
   }
   egress {
     from_port = 0
@@ -37,11 +37,11 @@ resource "aws_security_group" "private_instance" {
     protocol = "-1"
     cidr_blocks = [var.everywhere_cidr]
   }
-
   tags = {
-    Name = "tf-demo-private-sg"
+    Name = "tf-demo-allow-http80-sg"
     Owner = var.owner
     Env = "Dev"
   }
 }
+
 
