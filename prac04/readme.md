@@ -1,6 +1,7 @@
 # Exercise 4
 
 ## AWS Resources
+- IAM Role
 - Auto Scaling Group
 - Launch Configuration
 - ELB
