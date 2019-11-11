@@ -6,6 +6,10 @@
 - Auto Scaling Group
 - ALB
 
+### Observe
+- Watch the behavior of ALB and ASG when you STOP one EC2 instance
+
+
 ## How Auto scaling group works 
 https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html
 

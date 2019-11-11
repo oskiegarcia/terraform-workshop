@@ -53,6 +53,7 @@
    EC2 locator| https://cloud-images.ubuntu.com/locator/ec2/ 
    List of Providers| https://www.terraform.io/docs/providers/index.html
    AWS Provider|https://www.terraform.io/docs/providers/aws/index.html
+   EC2 Metadata|https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
       
 3. Terraform commands
 
