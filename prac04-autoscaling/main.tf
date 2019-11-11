@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-resource "aws_launch_configuration" "asg_config" {
+resource "aws_launch_configuration" "tf_demo_asg_config" {
   image_id = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name = aws_key_pair.generated_key.key_name
@@ -26,7 +26,7 @@ resource "aws_launch_configuration" "asg_config" {
 }
 
 resource "aws_autoscaling_group" "tf_demo_asg" {
-  launch_configuration    = aws_launch_configuration.asg_config.id
+  launch_configuration    = aws_launch_configuration.tf_demo_asg_config.id
   vpc_zone_identifier = [aws_subnet.az_a_public_sub.id,aws_subnet.az_b_public_sub.id]
   health_check_type       = "ELB"
   min_size                = "2"
