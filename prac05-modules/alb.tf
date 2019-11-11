@@ -1,7 +1,7 @@
 resource "aws_lb" "tf_demo_alb" {
   name            = "tf-demo-alb"
-  subnets         = [aws_subnet.az_a_public_sub.id, aws_subnet.az_b_public_sub.id]
-  security_groups = [aws_security_group.allow_http80.id]
+  subnets         = [module.az_a_public_sub.id, module.az_b_public_sub.id]
+  security_groups = [module.allow_http80.id]
   internal        = false
   idle_timeout    = 60
   tags = {
@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "tf_demo_alb_tg" {
   name     = "tf-demo-alb-tg"
   port     = "80"
   protocol = "HTTP"
-  vpc_id   = aws_vpc.tf_demo_vpc.id
+  vpc_id   = module.tf_demo_vpc.vpc_id
   tags = {
     name = "tf-demo-alb-tg"
     Owner = var.owner

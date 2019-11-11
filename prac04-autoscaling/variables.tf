@@ -11,6 +11,10 @@ variable "owner" {
   default = "Dream Team"
 }
 
+variable "environment" {
+  default = "Dev"
+}
+
 variable "key_name" {
   default = "tf_demo_key"
 }
@@ -38,3 +42,4 @@ variable "public_subnet_cidr_az_b" {
   description = "CIDR for the Public Subnet"
   default = "10.0.2.0/24"
 }
+

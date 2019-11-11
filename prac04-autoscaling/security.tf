@@ -17,7 +17,7 @@ resource "aws_security_group" "allow_ssh" {
   tags = {
     Name = "tf-demo-allow-ssh-sg"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_security_group" "allow_http80" {
   tags = {
     Name = "tf-demo-allow-http80-sg"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 

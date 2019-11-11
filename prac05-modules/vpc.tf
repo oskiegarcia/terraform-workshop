@@ -1,89 +1,33 @@
-resource "aws_vpc" "tf_demo_vpc" {
-  cidr_block = var.vpc_cidr
-  enable_dns_hostnames = true
-  tags = {
-    Name = "tf-demo-aws-vpc"
-    Owner = var.owner
-    Env = "Dev"
-  }
+
+module "tf_demo_vpc" {
+  source = "./modules/vpc"
+  name = "tf-demo-aws-vpc"
+  environment = "Dev"
+  owner = var.owner
+  vpc_cidr = "10.0.0.0/16"
 }
 
-resource "aws_internet_gateway" "tf_demo_igw" {
-  vpc_id = aws_vpc.tf_demo_vpc.id
+module "az_a_public_sub" {
+  source = "./modules/vpc/public_subnet"
+  name = "tf-demo-public-subnet-az-a"
+  owner = var.owner
+  environment = "Dev"
+
+  az = "${var.aws_region}a"
+  igw_id = module.tf_demo_vpc.igw_id
+  subnet_cidr_block = "10.0.0.0/24"
+  vpc_id = module.tf_demo_vpc.vpc_id
 }
 
+module "az_b_public_sub" {
+  source = "./modules/vpc/public_subnet"
+  name = "tf-demo-public-subnet-az-b"
+  owner = var.owner
+  environment = "Dev"
 
-/*
-  Public Subnet - Availability Zone a
-*/
-resource "aws_subnet" "az_a_public_sub" {
-  vpc_id = aws_vpc.tf_demo_vpc.id
-
-  cidr_block = var.public_subnet_cidr_az_a
-  availability_zone = "${var.aws_region}a"
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name = "tf-demo-public-subnet-az-a"
-    Owner = var.owner
-    Env = "Dev"
-  }
+  az = "${var.aws_region}b"
+  igw_id = module.tf_demo_vpc.igw_id
+  subnet_cidr_block = "10.0.2.0/24"
+  vpc_id = module.tf_demo_vpc.vpc_id
 }
 
-resource "aws_route_table" "az_a_public_rtb" {
-  vpc_id = aws_vpc.tf_demo_vpc.id
-
-  route {
-    cidr_block = var.everywhere_cidr
-    gateway_id = aws_internet_gateway.tf_demo_igw.id
-  }
-
-  tags = {
-    Name = "public-route-table-az-a"
-    Owner = var.owner
-    Env = "Dev"
-  }
-}
-
-resource "aws_route_table_association" "az_a_public_rtba" {
-  subnet_id = aws_subnet.az_a_public_sub.id
-  route_table_id = aws_route_table.az_a_public_rtb.id
-}
-
-
-/*
-  Public Subnet - Availability Zone b
-*/
-resource "aws_subnet" "az_b_public_sub" {
-  vpc_id = aws_vpc.tf_demo_vpc.id
-
-  cidr_block = var.public_subnet_cidr_az_b
-  availability_zone = "${var.aws_region}b"
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name = "tf-demo-public-subnet-az-b"
-    Owner = var.owner
-    Env = "Dev"
-  }
-}
-
-resource "aws_route_table" "az_b_public_rtb" {
-  vpc_id = aws_vpc.tf_demo_vpc.id
-
-  route {
-    cidr_block = var.everywhere_cidr
-    gateway_id = aws_internet_gateway.tf_demo_igw.id
-  }
-
-  tags = {
-    Name = "public-route-table-az-b"
-    Owner = var.owner
-    Env = "Dev"
-  }
-}
-
-resource "aws_route_table_association" "az_b_public_rtba" {
-  subnet_id = aws_subnet.az_b_public_sub.id
-  route_table_id = aws_route_table.az_b_public_rtb.id
-}

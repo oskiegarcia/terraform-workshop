@@ -7,7 +7,7 @@ resource "aws_lb" "tf_demo_alb" {
   tags = {
     Name = "tf-demo-alb"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_lb_target_group" "tf_demo_alb_tg" {
   tags = {
     name = "tf-demo-alb-tg"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
   stickiness {
     type            = "lb_cookie"

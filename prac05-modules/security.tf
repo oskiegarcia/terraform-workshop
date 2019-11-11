@@ -1,47 +1,28 @@
-resource "aws_security_group" "allow_ssh" {
+
+module "allow_ssh" {
+  source = "./modules/sg"
   name = "tf-demo-allow-ssh-sg"
-  vpc_id = aws_vpc.tf_demo_vpc.id
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = [var.everywhere_cidr]
-    description = "ssh login"
-  }
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = [var.everywhere_cidr]
-  }
-  tags = {
-    Name = "tf-demo-allow-ssh-sg"
-    Owner = var.owner
-    Env = "Dev"
-  }
+  environment = var.environment
+  owner = var.owner
+
+  vpc_id = module.tf_demo_vpc.vpc_id
+  inbound_cidr = [var.everywhere_cidr]
+  inbound_desc = "ssh login"
+  inbound_port_from = 22
+  inbound_port_to = 22
 }
 
-resource "aws_security_group" "allow_http80" {
+module "allow_http80" {
+  source = "./modules/sg"
   name = "tf-demo-allow-http80-sg"
-  vpc_id = aws_vpc.tf_demo_vpc.id
-  ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = [var.everywhere_cidr]
-    description = "http access"
-  }
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = [var.everywhere_cidr]
-  }
-  tags = {
-    Name = "tf-demo-allow-http80-sg"
-    Owner = var.owner
-    Env = "Dev"
-  }
+  environment = var.environment
+  owner = var.owner
+
+  vpc_id = module.tf_demo_vpc.vpc_id
+  inbound_cidr = [var.everywhere_cidr]
+  inbound_desc = "http access"
+  inbound_port_from = 80
+  inbound_port_to = 80
 }
 
 

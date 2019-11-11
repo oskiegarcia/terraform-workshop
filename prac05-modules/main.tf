@@ -18,7 +18,7 @@ resource "aws_launch_configuration" "tf_demo_asg_config" {
   image_id = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name = aws_key_pair.generated_key.key_name
-  security_groups = [aws_security_group.allow_ssh.id, aws_security_group.allow_http80.id]
+  security_groups = [module.allow_ssh.id, module.allow_http80.id]
   user_data = file("install_softwares.sh")
   lifecycle {
     create_before_destroy = true
@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "tf_demo_asg_config" {
 
 resource "aws_autoscaling_group" "tf_demo_asg" {
   launch_configuration    = aws_launch_configuration.tf_demo_asg_config.id
-  vpc_zone_identifier = [aws_subnet.az_a_public_sub.id,aws_subnet.az_b_public_sub.id]
+  vpc_zone_identifier = [module.az_a_public_sub.id,module.az_b_public_sub.id]
   health_check_type       = "ELB"
   min_size                = "2"
   max_size                = "2"
