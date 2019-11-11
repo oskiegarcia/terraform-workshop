@@ -4,7 +4,7 @@ resource "aws_vpc" "tf_demo_vpc" {
   tags = {
     Name = "tf-demo-aws-vpc"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_subnet" "az_a_public_sub" {
   tags = {
     Name = "tf-demo-public-subnet-az-a"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -41,7 +41,7 @@ resource "aws_route_table" "az_a_public_rtb" {
   tags = {
     Name = "public-route-table-az-a"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -64,7 +64,7 @@ resource "aws_subnet" "az_b_public_sub" {
   tags = {
     Name = "tf-demo-public-subnet-az-b"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -79,7 +79,7 @@ resource "aws_route_table" "az_b_public_rtb" {
   tags = {
     Name = "public-route-table-az-b"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
