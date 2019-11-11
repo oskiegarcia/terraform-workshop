@@ -1,3 +1,15 @@
+# Course Outline
+
+ 
+  Exercise | Description 
+ --------------|-------------------------------------- 
+ prac01-basic-ec2| EC2 basics, IAM
+ prac02-keypair-securitygroup| Key Pair, Security Group
+ prac03-vpc| VPC, Subnet, Route Table, Internet Gateway, NAT Gateway
+ prac04-autoscaling| Launch Configuration, EC2 with user data, Auto Scaling Group, ELB
+ prac05-modules| Terraform modules
+
+
 # Initial setup
 
 1. Environment setup  
