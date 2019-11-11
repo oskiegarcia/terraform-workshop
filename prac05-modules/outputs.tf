@@ -1,7 +1,7 @@
-output "ec2_ami" {
-  value = aws_instance.terra_demo.ami
+output "public-ips" {
+  value = data.aws_instances.nodes.public_ips
 }
 
-output "ec2_public_ip" {
-  value = aws_instance.terra_demo.public_ip
+output "alb-dns" {
+  value = aws_lb.tf_demo_alb.dns_name
 }
