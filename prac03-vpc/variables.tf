@@ -11,6 +11,10 @@ variable "owner" {
   default = "Dream Team"
 }
 
+variable "environment" {
+  default = "Dev"
+}
+
 variable "key_name" {
   default = "tf_demo_key"
 }

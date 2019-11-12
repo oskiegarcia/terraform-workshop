@@ -14,3 +14,11 @@ variable "key_name" {
 variable "instance_type" {
   default = "t2.micro"
 }
+
+variable "owner" {
+  default = "Dream Team"
+}
+
+variable "environment" {
+  default = "Dev"
+}

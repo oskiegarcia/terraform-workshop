@@ -30,8 +30,8 @@ resource "aws_security_group" "instance" {
   }
   tags ={
     Name="tf_demo_sg"
-    Owner = "Dream Team"
-    Env = "Dev"
+    Owner = var.owner
+    Env = var.environment
   }
 }
 
@@ -52,7 +52,7 @@ resource "aws_instance" "terra_demo" {
   vpc_security_group_ids=[aws_security_group.instance.id]
 tags = {
     Name = "tf-demo-ec2"
-    Owner = "Dream Team"
-    Env = "Dev"
+    Owner = var.owner
+    Env = var.environment
   }
 }

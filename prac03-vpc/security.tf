@@ -17,7 +17,7 @@ resource "aws_security_group" "public_instance" {
   tags = {
     Name = "tf-demo-public-sg"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -41,7 +41,7 @@ resource "aws_security_group" "private_instance" {
   tags = {
     Name = "tf-demo-private-sg"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 

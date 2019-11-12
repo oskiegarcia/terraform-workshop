@@ -23,7 +23,7 @@ resource "aws_instance" "terra_demo1" {
   tags = {
     Name = "tf-demo-instance1-az_1a_public_sub"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -36,6 +36,6 @@ resource "aws_instance" "terra_demo2" {
   tags = {
     Name = "tf-demo-instance2-az_1a_private_sub"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
