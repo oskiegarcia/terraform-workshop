@@ -1,7 +1,7 @@
 output "public-ips" {
-  value = data.aws_instances.nodes.public_ips
+  value = module.tf_demo_asg.public-ips
 }
 
 output "alb-dns" {
-  value = aws_lb.tf_demo_alb.dns_name
+  value = module.tf_demo_alb.alb-dns
 }

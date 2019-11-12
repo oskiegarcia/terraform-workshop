@@ -19,12 +19,3 @@ variable "owner" {
 variable "environment" {
   default = "Dev"
 }
-
-variable "key_name" {
-  default = "tf_demo_key"
-}
-
-variable "instance_type" {
-  default = "t2.micro"
-}
-

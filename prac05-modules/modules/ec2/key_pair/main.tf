@@ -10,5 +10,5 @@ resource "aws_key_pair" "generated_key" {
 
 resource "local_file" "tf_demo_pem" {
   content = tls_private_key.tf_demo_pvt_key.private_key_pem
-  filename = "${path.module}/tf_demo.pem"
+  filename = "${path.module}/${var.key_filename}"
 }
