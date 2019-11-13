@@ -88,6 +88,8 @@ module "tf_demo_asg" {
   source = "./modules/asg"
   asg_name = "tf-demo-asg"
   instance_type = "t2.micro"
+  min_size = "2"
+  max_size = "2"
   user_data_filename = "install_softwares.sh"
   alb_target_group_arn = module.tf_demo_alb.tg_arn
   image_id = data.aws_ami.ubuntu.id

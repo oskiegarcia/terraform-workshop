@@ -4,7 +4,7 @@ resource "aws_vpc" "tf_demo_vpc" {
   tags = {
     Name = "tf-demo-aws-vpc"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_subnet" "az_a_public_sub" {
   tags = {
     Name = "tf-demo-public-subnet"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -41,7 +41,7 @@ resource "aws_route_table" "az_a_public_rtb" {
   tags = {
     Name = "public-route-table"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_eip" "nat_eip" {
   tags = {
     Name = "tf-demo-eip"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 
 }
@@ -70,7 +70,7 @@ resource "aws_nat_gateway" "nat_gw" {
   tags = {
     Name = "tf-demo-nat"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -84,7 +84,7 @@ resource "aws_subnet" "az_a_private_sub" {
   tags = {
     Name = "tf-demo-private-subnet"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
@@ -99,7 +99,7 @@ resource "aws_route_table" "az_a_private_rtb" {
   tags = {
     Name = "private-route-table"
     Owner = var.owner
-    Env = "Dev"
+    Env = var.environment
   }
 }
 
