@@ -21,3 +21,7 @@ variable "alb_target_group_arn" {}
 variable "user_data_filename" {}
 
 variable "asg_name" {}
+
+variable "min_size" {}
+
+variable "max_size" {}

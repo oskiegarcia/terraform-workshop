@@ -6,6 +6,8 @@
 - Auto Scaling Group
 - ALB
 
+![vpc](auto-scaling-diagram.png)
+
 ### Observe
 - Watch the behavior of ALB and ASG when you STOP one EC2 instance
 

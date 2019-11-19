@@ -7,6 +7,9 @@
 - Internet Gateway
 - NAT Gateway
 
+![vpc](vpc-diagram.png)
+
+
 ## Notes
 Copying file remotely:  
 ```shell script

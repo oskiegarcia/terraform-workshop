@@ -14,8 +14,8 @@ resource "aws_autoscaling_group" "this_asg" {
   launch_configuration    = aws_launch_configuration.this_asg_config.id
   vpc_zone_identifier = var.vpc_zone_identifier
   health_check_type       = "ELB"
-  min_size                = "2"
-  max_size                = "2"
+  min_size                = var.min_size
+  max_size                = var.max_size
   tag {
     key = "asg-name"
     propagate_at_launch = true
