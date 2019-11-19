@@ -7,10 +7,10 @@
 - Security Group
 
 ## Remote state
-Setup backend to store terraform state in Amazon S3
-  1. Create bucket in AWS
-        1. Create an S3 bucket (Note that bucket name is unique globally)
-        2. Create folder called "mytf"
+Setup backend to store terraform state (remember *.tfstate ?) in Amazon S3
+  1. Create S3 bucket in AWS (if you have not done it earlier while setting up)
+     1. Create an S3 bucket (Note that bucket name is unique globally worldwide)
+     2. Create folder called "mytf"
 
   2. Configure the bucket and path in backend.tf
 
@@ -22,10 +22,10 @@ Setup backend to store terraform state in Amazon S3
              }
            }
 
-       - Execute the following:  
-        terraform init
-
-## SSH login to EC2
-ssh -i "tf_demo.pem" ubuntu@<public_ip>
-
-
+  3. Run: ```terraform init```
+  4. Run: ```terraform apply```
+     - tf_demo.pem will be created.
+     - **Take note of your EC2 ip.**
+  5. ssh to your EC2 instance
+     1. ```chmod 400 tf_demo.pem```.
+     2. ```ssh -i tf_demo.pem ubuntu@<EC2 PUBLIC IP>```
