@@ -26,6 +26,7 @@
      
 2. Setup your AWS account (as Root)
 
+   1. Create a new account / Sign in as root from: https://aws.amazon.com/console/
    1. Set up multi-factor authentication
    2. New User Creation
       1. Setup new user
