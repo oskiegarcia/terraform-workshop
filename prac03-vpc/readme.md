@@ -30,7 +30,10 @@
 5. See subnet -> route table
 
 ## Notes
-Copying file remotely:  
+- Copying file remotely:  
 ```shell script
 scp  -i "tf_demo.pem" <FILE TO COPY> ubuntu@<PUBLIC IP>:/home/ubuntu
 ```
+
+- A more general VPC diagram would look like as shown below:
+![vpc](security-diagram.png)
