@@ -50,9 +50,9 @@
    5. Go to your AWS console as the created new user (log in from the web).
       1. Create a new S3 bucket from the AWS console.
          - Select NEXT all the way.
+         - **Give a name you can remember for your s3 bucket as you will use it in prac02**
       2. Retry ```aws s3 ls --profile tf_demo``` again.
          - You should see your bucket listed there.
-      3. Destroy the s3 bucket.
 
 3. Download terraform
    - https://www.terraform.io/downloads.html
